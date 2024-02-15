@@ -8,7 +8,7 @@ public class Array_27 {
         System.out.println("==============================\u001B[0m");
 
 
-        Scanner input22 = new Scanner(System.in);
+        Scanner sc27 = new Scanner(System.in);
 
         String[] mk = {"Pancasila","Konsep Teknologi Informasi",
         "Critical Thinking dan Problem Solving","Matematika Dasar","Bahasa Inggris",
@@ -22,7 +22,7 @@ public class Array_27 {
 
         for (int i = 0; i < mk.length; i++) {
             System.out.print("Masukkan nilai angka untuk MK " + mk[i] + ": ");
-            nilaiAngka[i] = input22.nextDouble();
+            nilaiAngka[i] = sc27.nextDouble();
 
             if (nilaiAngka[i] <= 100 && nilaiAngka[i] > 80) {
                 nilaiHuruf[i] = "A";
