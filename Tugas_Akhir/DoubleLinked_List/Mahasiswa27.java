@@ -7,16 +7,18 @@ public class Mahasiswa27 {
     private String jurusan;
     private int angkatan;
     private String alamat;
+    private String jenisKelamin;
 
     public Mahasiswa27() {}
 
-    public Mahasiswa27(String nim, String nama, String tglLahir, String jurusan, int angkatan, String alamat) {
+    public Mahasiswa27(String nim, String nama, String tglLahir, String jurusan, int angkatan, String alamat, String jenisKelamin) {
         this.nim = nim;
         this.nama = nama;
         this.tglLahir = tglLahir;
         this.jurusan = jurusan;
         this.angkatan = angkatan;
         this.alamat = alamat;
+        this.jenisKelamin = jenisKelamin;
     }
 
     public String getNim() {
@@ -67,9 +69,18 @@ public class Mahasiswa27 {
         this.alamat = alamat;
     }
 
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
     @Override
     public String toString() {
         return "NIM: " + nim + ", Nama: " + nama + ", Tanggal Lahir: " + tglLahir +
-               ", Jurusan: " + jurusan + ", Angkatan: " + angkatan + ", Alamat: " + alamat;
+               ", Jurusan: " + jurusan + ", Angkatan: " + angkatan + ", Alamat: " + alamat +
+               ", Jenis Kelamin: " + jenisKelamin;
     }
 }

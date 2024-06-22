@@ -3,8 +3,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
-
 public class DoubleLinkedList27 {
     private Node27 head;
     private Node27 tail;
@@ -63,39 +61,70 @@ public class DoubleLinkedList27 {
     }
 
     public void printAll() {
+        if (head == null) {
+            System.out.println("Tidak ada data mahasiswa.");
+            return;
+        }
+    
+        System.out.println("+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
+        System.out.println("| NIM        | Nama           | Tgl Lahir   | Jurusan            | Angkatan  | Alamat           | Jenis Kelamin |");
+        System.out.println("+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
+    
         Node27 current = head;
         while (current != null) {
-            System.out.println(current.data.toString());
+            Mahasiswa27 mhs = current.data;
+            System.out.printf("| %-10s | %-14s | %-11s | %-18s | %-9d | %-16s | %-13s |\n",
+                mhs.getNim(), mhs.getNama(), mhs.getTglLahir(), mhs.getJurusan(), mhs.getAngkatan(), mhs.getAlamat(), mhs.getJenisKelamin());
             current = current.next;
         }
+    
+        System.out.println("+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
     }
+    
 
-    public void update(String nim, String nama, String tglLahir,String jurusan, int angkatan, String alamat) {
+    public void update(String nim, String nama, String tglLahir, String jurusan, int angkatan, String alamat, String jenisKelamin) {
         Node27 current = head;
         while (current != null) {
             if (current.data.getNim().equals(nim)) {
                 if (!nama.isEmpty()) current.data.setNama(nama);
                 if (!tglLahir.isEmpty()) current.data.setTglLahir(tglLahir);
                 if (!jurusan.isEmpty()) current.data.setJurusan(jurusan);
-                if (angkatan == 0) current.data.setAngkatan(angkatan);
+                if (angkatan != 0) current.data.setAngkatan(angkatan);
                 if (!alamat.isEmpty()) current.data.setAlamat(alamat);
+                if (!jenisKelamin.isEmpty()) current.data.setJenisKelamin(jenisKelamin);
                 return;
-            }else{
-                System.out.println("Mahasiswa tidak ditemukan! ");
             }
             current = current.next;
         }
+        System.out.println("Mahasiswa tidak ditemukan!");
     }
 
     public void searchByName(String nama) {
         Node27 current = head;
+        boolean found = false;
         while (current != null) {
             if (current.data.getNama().equalsIgnoreCase(nama)) {
-                System.out.println(current.data);
+                System.out.println(
+                    "+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
+                System.out.println(
+                    "| NIM        | Nama           | Tgl Lahir   | Jurusan            | Angkatan  | Alamat           | Jenis Kelamin |");
+                System.out.println(
+                    "+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
+                System.out.printf("| %-10s | %-14s | %-11s | %-18s | %-9d | %-16s | %-13s |\n",
+                    current.data.getNim(), current.data.getNama(), current.data.getTglLahir(),
+                    current.data.getJurusan(), current.data.getAngkatan(), current.data.getAlamat(),
+                    current.data.getJenisKelamin());
+                System.out.println(
+                    "+------------+----------------+-------------+--------------------+-----------+------------------+---------------+");
+                found = true;
             }
             current = current.next;
         }
+        if (!found) {
+            System.out.println("Mahasiswa tidak ditemukan.");
+        }
     }
+    
 
     public int count() {
         int count = 0;
@@ -120,9 +149,8 @@ public class DoubleLinkedList27 {
             System.out.println("Terjadi kesalahan saat mengekspor data.");
             e.printStackTrace();
         }
-
-        
     }
+
     public void sortByName() {
         if (head == null) {
             return;
@@ -144,5 +172,4 @@ public class DoubleLinkedList27 {
             }
         } while (swapped);
     }
-    
 }
